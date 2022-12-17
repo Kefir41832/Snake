@@ -46,12 +46,12 @@ void Game::drawMap() const
 		for (size_t j = 0; j < _cols; ++j)
 		{
 			str += _map[i][j];
-			str += ' ';
+			str += " ";
 		}
-		str += '\n';
+		str += "\n";
 	}
-	printw("%s", str.c_str());
-	// printw("%s", "Score: " + std::to_string(_score));
+	// std::cout << std::endl << "score: " << _score;
+	ncursesPrintw(str.c_str());
 }
 bool Game::isSnakeRivaled() const
 {
@@ -70,77 +70,53 @@ bool Game::isSnakeRivaled() const
 	return false;
 }
 bool Game::isSnakeAte() const { return {_snake.GetHeadSnake() == _eat}; }
-// void Game::statusGame()
-// {
-// 	initscr();
-// 	curs_set(0);
-// 	keypad(stdscr, true);
-// 	_statusGame = getch();
-// 	switch (_statusGame)
-// 	{
-// 	case ('p'):
-// 	{
+// void Game::statusGame() {
+// 	if () _statusGame = getch();
+// 	switch (_statusGame) {
+// 	case('p'): {
 // 		system("cls");
 // 		updateMap();
 // 		drawMap();
-// 		printw("%s", "\n Game on pause, press any key to continue!");
-// 	}
-// 	case (27):
-// 	{
-// 		_isDefeat = true;
-// 		break;
-// 	}
-// 	default:
-// 	{
+// 		std::cout << std::endl << "Game on pause, press any key to continue!";
+// 		while(!kbhit()){}
+// 		break; }
+// 	case(27): {_isDefeat = true; break; }
+// 	default: {
 // 		_direction = _statusGame;
 // 		system("cls");
-// 		if (isSnakeRivaled())
-// 		{
+// 		if (isSnakeRivaled()) {
 // 			_isDefeat = true;
-// 			printw("%s", "\nGame over, you lose!\n");
+// 			std::cout << std::endl << "Game over, you lose!" << std::endl;
 // 		}
-// 		else
-// 		{
-// 			if (_snake.GetBodySnake().size() == (_rows - 2) * (_cols - 2) - 1)
-// 			{
+// 		else {
+// 			if (_snake.GetBodySnake().size() == (_rows - 2) * (_cols - 2) - 1) {
 // 				_isDefeat = true;
-// 				// printw("%s", "\nCongratulations! You win!" + std::to_string(_score) + "\n");
+// 				std::cout << std::endl << "Congratulations! You win!" << _score << std::endl;
 // 			}
-// 			else
-// 			{
-// 				if (isSnakeAte())
-// 				{
+// 			else {
+// 				if (isSnakeAte()) {
 // 					_score += 10;
-// 					_eat = {1 + rand() % (_rows - 2), 1 + rand() % (_cols - 2)};
+// 					_eat = { 1 + rand() % (_rows - 2), 1 + rand() % (_cols - 2) };
 // 					_newTail = _snake.GetBodySnake().front();
 // 					_snake.updateCoordSnake(_direction);
 // 					_snake.snakeBodyIncrement(_newTail);
 // 				}
-// 				else
-// 				{
-// 					_snake.updateCoordSnake(_direction);
-// 				}
+// 				else { _snake.updateCoordSnake(_direction); }
 // 			}
 // 		}
 // 		updateMap();
 // 		drawMap();
-// 		sleep(200);
-// 		break;
+// 		Sleep(200);
+// 		break; }
 // 	}
-// 	}
-// }
+//}
 void Game::logicGame()
 {
-	initscr();
-	curs_set(0);
-	noecho();
+	ncursesInitscr();
 	updateMap();
 	drawMap();
-	// do
-	// {
-	// 	//statusGame();
-	// } while (!_isDefeat);
-	printw("%s", "\nPress any key to exit the game.");
-	getch();
-	endwin();
+	// ncursesEndwin();
+	//  do { statusGame(); } while (!_isDefeat);
+	//  std::cout << std::endl << "Press any key to exit the game.";
+	//  getch();
 }

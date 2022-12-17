@@ -1,9 +1,9 @@
 #pragma once
 #include "Snake.h"
 #include <ctime>
-#include <ncurses.h>
+// #include <iostream>
 #include <string>
-
+#include "ncurses_wrapper.h"
 class Game
 {
 public:
