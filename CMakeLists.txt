@@ -4,7 +4,7 @@ set(CMAKE_CXX_STANDARD 20)
 include(CTest)
 enable_testing()
 
-add_executable(main main.cpp Game.cpp Snake.cpp)
+add_executable(main main.cpp Game.cpp Snake.cpp ncurses_wrapper.cpp)
 target_link_libraries(main ncurses)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
